@@ -21,6 +21,14 @@ public class CarEngine : MonoBehaviour {
 	public Texture2D textureBraking;
 	public Renderer carRenderer;
 
+	[Header("Sensors")]
+	public float sensorLength = 3f;
+	public float frontSensorPosition = 0.5f;
+	public float sideSensorPosition = 0.3f;
+	public float sensorHeight = 0.2f;
+	public float frontSensorAngle = 30f;
+
+
     private Rigidbody rb;
 	private List<Transform> nodes;
 	private int currentNode = 0;
@@ -46,10 +54,46 @@ public class CarEngine : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
+		Sensors ();
 		ApplySteer ();
 		Drive();
 		CheckWaypointDistance ();
 		Braking ();
+	}
+
+	private void Sensors ()
+	{
+		RaycastHit hit;
+		Vector3 sensorStartPos = transform.position;
+
+		// front center sensor
+		sensorStartPos.z += frontSensorPosition;
+		sensorStartPos.y += sensorHeight;
+		if (Physics.Raycast (sensorStartPos, transform.forward, out hit, sensorLength)) {
+			Debug.DrawLine (sensorStartPos, hit.point);
+		}
+
+		// front right sensor
+		sensorStartPos.x += sideSensorPosition;
+		if (Physics.Raycast (sensorStartPos, transform.forward, out hit, sensorLength)) {
+			Debug.DrawLine (sensorStartPos, hit.point);
+		}
+
+		// front right angle sensor
+		if (Physics.Raycast (sensorStartPos, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength)) {
+			Debug.DrawLine (sensorStartPos, hit.point);
+		}
+
+		// front left sensor
+		sensorStartPos.x -= 2f * sideSensorPosition;
+		if (Physics.Raycast (sensorStartPos, transform.forward, out hit, sensorLength)) {
+			Debug.DrawLine (sensorStartPos, hit.point);
+		}
+		// front right angle sensor
+		if (Physics.Raycast (sensorStartPos, Quaternion.AngleAxis(-frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength)) {
+			Debug.DrawLine (sensorStartPos, hit.point);
+		}
+
 	}
 
 	private void ApplySteer() {
