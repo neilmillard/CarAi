@@ -67,10 +67,10 @@ MonoBehaviour:
     y: 0
     width: 1208
     height: 957
-  m_MinSize: {x: 202, y: 342}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 202, y: 321}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 751
+  controlID: 11
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -91,10 +91,10 @@ MonoBehaviour:
     y: 0
     width: 326
     height: 957
-  m_MinSize: {x: 234, y: 471}
-  m_MaxSize: {x: 10004, y: 14021}
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 35
+  controlID: 83
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,10 +165,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 957
-  m_MinSize: {x: 713, y: 471}
-  m_MaxSize: {x: 18008, y: 14021}
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 33
+  controlID: 9
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,8 +187,8 @@ MonoBehaviour:
     y: 0
     width: 386
     height: 957
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -278,10 +278,10 @@ MonoBehaviour:
     y: 0
     width: 1534
     height: 957
-  m_MinSize: {x: 436, y: 471}
-  m_MaxSize: {x: 14006, y: 14021}
+  m_MinSize: {x: 436, y: 492}
+  m_MaxSize: {x: 14006, y: 14042}
   vertical: 0
-  controlID: 34
+  controlID: 10
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -371,7 +371,8 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders: []
+    m_Folders:
+    - Assets/Scripts
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -382,7 +383,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 021c0000
     m_LastClickedID: 7170
-    m_ExpandedIDs: 00000000142800001c280000202800002228000028280000322800004e280000d2280000d4280000d6280000d8280000da280000dc280000de280000e0280000
+    m_ExpandedIDs: 00000000442600004c2600005226000058260000642600008226000086260000cc26000016280000182800001a2800001c2800001e280000202800002228000024280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -410,7 +411,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000142800001c28000020280000222800002828000030280000322800004e280000d2280000d4280000d6280000d8280000da280000dc280000de280000e0280000
+    m_ExpandedIDs: 00000000442600004c2600005226000058260000642600008226000086260000cc26000016280000182800001a2800001c2800001e280000202800002228000024280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -526,9 +527,9 @@ MonoBehaviour:
     height: 488
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 56b2feff54b2feff52b2feff50b2feff
-    m_LastClickedID: -85424
-    m_ExpandedIDs: 58b2feff42bdfefffaf4ffff0000000092280000a6280000aa280000
+    m_SelectedIDs: 4c270000
+    m_LastClickedID: 10060
+    m_ExpandedIDs: 1afcffff0000000030270000662700006a27000092270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -583,9 +584,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.5265913, y: 9.004995, z: -0.4768284}
+    m_Target: {x: -0.35941887, y: 8.121752, z: 8.365198}
     speed: 2
-    m_Value: {x: -5.5265913, y: 9.004995, z: -0.4768284}
+    m_Value: {x: -0.35941887, y: 8.121752, z: 8.365198}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -608,13 +609,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.071164034, y: -0.73009515, z: 0.07694343, w: 0.6752604}
+    m_Target: {x: -0.19811988, y: 0.024401143, z: -0.0049339137, w: -0.9798616}
     speed: 2
-    m_Value: {x: 0.071164034, y: -0.73009515, z: 0.07694343, w: 0.6752604}
+    m_Value: {x: -0.19811988, y: 0.024401143, z: -0.0049339137, w: -0.9798616}
   m_Size:
-    m_Target: 7.7120037
+    m_Target: 9.66123
     speed: 2
-    m_Value: 7.7120037
+    m_Value: 9.66123
   m_Ortho:
     m_Target: 0
     speed: 2
