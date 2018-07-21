@@ -23,9 +23,8 @@ public class CarEngine : MonoBehaviour {
 
 	[Header("Sensors")]
 	public float sensorLength = 3f;
-	public float frontSensorPosition = 0.5f;
+	public Vector3 frontSensorPosition = new Vector3(0f, 0.2f, 0.5f);
 	public float sideSensorPosition = 0.3f;
-	public float sensorHeight = 0.2f;
 	public float frontSensorAngle = 30f;
 
 
@@ -65,10 +64,11 @@ public class CarEngine : MonoBehaviour {
 	{
 		RaycastHit hit;
 		Vector3 sensorStartPos = transform.position;
+		sensorStartPos += transform.forward * frontSensorPosition.z;
+		sensorStartPos += transform.up * frontSensorPosition.y;
 
 		// front center sensor
-		sensorStartPos.z += frontSensorPosition;
-		sensorStartPos.y += sensorHeight;
+
 		if (Physics.Raycast (sensorStartPos, transform.forward, out hit, sensorLength)) {
 			Debug.DrawLine (sensorStartPos, hit.point);
 		}
