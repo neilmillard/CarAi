@@ -74,7 +74,7 @@ public class CarEngine : MonoBehaviour {
 		}
 
 		// front right sensor
-		sensorStartPos.x += sideSensorPosition;
+		sensorStartPos += transform.right * sideSensorPosition;
 		if (Physics.Raycast (sensorStartPos, transform.forward, out hit, sensorLength)) {
 			Debug.DrawLine (sensorStartPos, hit.point);
 		}
@@ -85,7 +85,7 @@ public class CarEngine : MonoBehaviour {
 		}
 
 		// front left sensor
-		sensorStartPos.x -= 2f * sideSensorPosition;
+		sensorStartPos -= transform.right * 2f * sideSensorPosition;
 		if (Physics.Raycast (sensorStartPos, transform.forward, out hit, sensorLength)) {
 			Debug.DrawLine (sensorStartPos, hit.point);
 		}
