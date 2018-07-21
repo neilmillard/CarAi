@@ -7,6 +7,7 @@ public class CarEngine : MonoBehaviour {
     public float force = 1;
 	public Transform path;
 	public float maxSteerAngle = 40f;
+	public float turnSpeed = 5f;
 	public WheelCollider wheelFL;
 	public WheelCollider wheelFR;
 	public WheelCollider wheelRL;
@@ -33,6 +34,7 @@ public class CarEngine : MonoBehaviour {
 	private int currentNode = 0;
 	private float currentTorque = 0;
 	private bool avoiding = false;
+	private float targetSteerAngle = 0;
 
 	private void Start () {
         rb = GetComponent<Rigidbody>();
@@ -59,6 +61,7 @@ public class CarEngine : MonoBehaviour {
 		Drive();
 		CheckWaypointDistance ();
 		Braking ();
+		lerpToSteerAngle ();
 	}
 
 	private void Sensors ()
@@ -124,8 +127,8 @@ public class CarEngine : MonoBehaviour {
 		}
 
 		if (avoiding) {
-			wheelFL.steerAngle = maxSteerAngle * avoidMultiplier;
-			wheelFR.steerAngle = maxSteerAngle * avoidMultiplier;
+			targetSteerAngle = maxSteerAngle * avoidMultiplier;
+
 		}
 
 	}
@@ -134,10 +137,7 @@ public class CarEngine : MonoBehaviour {
 		if (avoiding) return;
 		Vector3 relativeVector = transform.InverseTransformPoint (nodes [currentNode].position);
 		float newSteer = (relativeVector.x / relativeVector.magnitude) * maxSteerAngle;
-		wheelFL.steerAngle = newSteer;
-		wheelFR.steerAngle = newSteer;
-		relativeVector = relativeVector / relativeVector.magnitude;
-
+		targetSteerAngle = newSteer;
 	}
 
 	private void Drive(){
@@ -174,4 +174,8 @@ public class CarEngine : MonoBehaviour {
 		}
 	}
 
+	private void lerpToSteerAngle(){
+		wheelFL.steerAngle = Mathf.Lerp (wheelFL.steerAngle, targetSteerAngle, Time.deltaTime * turnSpeed);
+		wheelFR.steerAngle = Mathf.Lerp (wheelFR.steerAngle, targetSteerAngle, Time.deltaTime * turnSpeed);
+	}
 }
