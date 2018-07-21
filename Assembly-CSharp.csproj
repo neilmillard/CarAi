@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CarEngine.cs" />
+     <Compile Include="Assets\Scripts\CarWheel.cs" />
      <Compile Include="Assets\Scripts\Path.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
  <Reference Include="UnityEngine.UI">

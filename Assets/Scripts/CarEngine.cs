@@ -9,14 +9,19 @@ public class CarEngine : MonoBehaviour {
 	public float maxSteerAngle = 40f;
 	public WheelCollider wheelFL;
 	public WheelCollider wheelFR;
+	public float maxMotorTorque = 50f;
+	public float currentSpeed;
+	public float maximumSpeed = 100f;
+	public Vector3 centerOfMass;
 
     private Rigidbody rb;
 	private List<Transform> nodes;
 	private int currentNode = 0;
+	private float currentTorque = 0;
 
 	private void Start () {
         rb = GetComponent<Rigidbody>();
-
+		rb.centerOfMass = centerOfMass;
 		// Get child transforms
 		Transform[] pathTransforms = path.GetComponentsInChildren<Transform> ();
 		nodes = new List<Transform> ();
@@ -30,16 +35,14 @@ public class CarEngine : MonoBehaviour {
 	}
 	
 	private void Update () {
-        if (Input.GetKey(KeyCode.W)) {
-            rb.AddForce(transform.forward * force);
-        }
-        if (Input.GetKey(KeyCode.A)) {
-            rb.AddTorque(transform.up * -force);
-        }
+        
 	}
 
 	private void FixedUpdate() {
 		ApplySteer ();
+		Drive();
+		CheckWaypointDistance ();
+
 	}
 
 	private void ApplySteer() {
@@ -49,5 +52,25 @@ public class CarEngine : MonoBehaviour {
 		wheelFR.steerAngle = newSteer;
 		relativeVector = relativeVector / relativeVector.magnitude;
 
+	}
+
+	private void Drive(){
+		currentSpeed = 2 * Mathf.PI * wheelFL.radius * wheelFL.rpm * 60 / 1000;
+		if (currentSpeed < maximumSpeed) {
+			currentTorque = maxMotorTorque;
+		}
+		wheelFL.motorTorque = currentTorque;
+		wheelFR.motorTorque = currentTorque;
+	}
+
+	private void CheckWaypointDistance(){
+		float distanceToNode = Vector3.Distance (transform.position, nodes [currentNode].position);
+		if ( distanceToNode < 0.5f) {
+			if (currentNode == nodes.Count - 1) {
+				currentNode = 0;
+			} else {
+				currentNode++;
+			}
+		}
 	}
 }
