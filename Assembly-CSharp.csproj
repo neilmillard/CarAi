@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CarEngine.cs" />
      <Compile Include="Assets\Scripts\CarWheel.cs" />
      <Compile Include="Assets\Scripts\Path.cs" />
